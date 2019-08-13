@@ -1,3 +1,6 @@
+var os = require('os');
+var OSinfo = require('../modules/OSinfo');
+
 process.stdin.setEncoding('utf-8');
 //kod poniżej ma się wykonać w momencie odczytania wejścia
 process.stdin.on('readable', function () {
@@ -8,17 +11,18 @@ process.stdin.on('readable', function () {
 			case '/exit':
 				process.stdout.write('Quitting app!\n');	
 				process.exit();
-				break
+				break;
 			case '/version':
-				process.stdout.write(process.versions);
-				break
+				console.log(process.versions);
+				break;
 			case '/lang':
-				process.stdout.write(process.env.lang);
-				break
+				console.log(process.env.lang);
+				break;
+			case '/getOSinfo':
+				OSinfo.print();
+				break;
 			default:
 				process.stderr.write('Wrong instruction!\n'); 
 		}
-}
-	
+    }	
 });
-
